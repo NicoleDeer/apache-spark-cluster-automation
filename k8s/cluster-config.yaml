@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-config
+  namespace: playground
+data:
+  config.json: |
+    {
+      "data_warehouse_dir": "<oss-directory>",
+      "hms_host": "localhost",
+      "hms_db_host": <mysql-ip>,
+      "hms_db_name": "hms",
+      "hms_db_user": "root",
+      "hms_db_password": "root",
+      "aliyun_access_key_id": <oss-key-id>,
+      "aliyun_access_key_secret": <oss-key-secret>
+    }

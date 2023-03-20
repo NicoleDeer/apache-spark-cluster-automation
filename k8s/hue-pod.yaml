@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hue
+  namespace: playground
+  labels:
+    app: hue-pod
+spec:
+  containers:
+  - name: hue
+    image: gethue/hue:latest
+    ports:
+    - containerPort: 8888
+    volumeMounts:
+    - name: config-volume
+      mountPath: /usr/share/hue/desktop/conf/z-hue.ini
+      subPath: hue-ini
+  volumes:
+  - name: config-volume
+    configMap:
+      name: hue-config

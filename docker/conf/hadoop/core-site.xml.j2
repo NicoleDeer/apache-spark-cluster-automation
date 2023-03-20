@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html -->
+<configuration>
+
+    <!-- To be able to run Hive via JDBC as root. -->>
+    <property>
+        <name>hadoop.proxyuser.root.groups</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.root.hosts</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.hue.groups</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.hue.hosts</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>fs.oss.impl</name>
+        <value>org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem</value>
+    </property>
+    <property>
+        <name>fs.AbstractFileSystem.oss.impl</name>
+        <value>org.apache.hadoop.fs.aliyun.oss.OSS</value>
+    </property>
+    <property>
+        <name>fs.oss.accessKeyId</name>
+        <value>{{ aliyun_access_key_id }}</value>
+    </property>
+    <property>
+        <name>fs.oss.accessKeySecret</name>
+        <value>{{ aliyun_access_key_secret }}</value>
+    </property>
+    <property>
+        <name>fs.oss.endpoint</name>
+        <value>oss-cn-hangzhou.aliyuncs.com</value>
+    </property>
+</configuration>

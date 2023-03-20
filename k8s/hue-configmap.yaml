@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hue-config
+  namespace: playground
+data:
+  hue-ini: |
+    [desktop]
+    http_port=8888
+    app_blacklist=search,hbase,security
+    [[database]]
+    engine=mysql
+    host=<mysql-ip>
+    port=3306
+    user=root
+    password=root
+    name=hue
+    [notebook]
+    show_notebooks=true
+    enable_external_statements=true
+    enable_batch_execute=true
+    [[interpreters]]
+    [[[hive]]]
+    name=hive
+    interface=hiveserver2
+    [[[sparksql]]]
+    name=SparkSQL
+    interface=hiveserver2
+    [dashboard]
+    has_sql_enabled=true
+    [spark]
+    sql_server_host=<engines-ip>
+    sql_server_port=10015
+    [beeswax]
+    hive_server_host=<engines-ip>
+    hive_server_port=10000
